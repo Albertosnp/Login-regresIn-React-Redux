@@ -22,8 +22,6 @@ export const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.value = "";
-  // email = "eve.holt@reqres.in",
-  // password = "cityslicka"
     //Para que no se envien datos al servidor vacios
     if (!userName || !password) return;
 
@@ -53,7 +51,7 @@ export const LoginForm = () => {
             placeholder="password"
             onChange={handlerChange}
           />
-          <button>login</button>
+          <button>Iniciar sesión</button>
         </form>
       </div>
     </div>

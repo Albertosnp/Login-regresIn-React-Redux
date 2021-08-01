@@ -7,12 +7,13 @@ const App = () => {
   console.log(token);
   const handlerClick = () => {
     localStorage.removeItem("token");
+    //Añadir estado global
     setlogin(false);
   };
   return (
     <div>
       <p>Prueba técnica de LaLiga</p>
-      {!token ? (
+      {!login ? (
         <LoginForm />
       ) : (
         <button onClick={() => handlerClick()}>Cerrar sesión</button>
