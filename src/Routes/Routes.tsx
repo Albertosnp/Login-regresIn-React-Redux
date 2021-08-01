@@ -1,10 +1,9 @@
 import React from "react";
-import { Users } from "components/Users/Users";
 import { Switch } from "react-router";
 import { Redirect, Route } from "react-router-dom";
-import { ButtonLogOut } from "../components/ButtonLogOut/ButtonLogOut";
 import { LoginForm } from "../components/LoginForm/LoginForm";
 import { RootStateOrAny, useSelector } from "react-redux";
+import { LoggedLayout } from "Layouts/LoggedLayout";
 
 /* Componente Routes que aloja los componentes a mostrar dependiendo de si esta logueado */
 export const Routes = () => {
@@ -21,10 +20,9 @@ export const Routes = () => {
       </Route>
       <Route path="/users" exact>
         {!auth && <Redirect to="/login" />}
-        <ButtonLogOut />
-        <Users />
+        <LoggedLayout />
       </Route>
-      <Redirect to="/login" />
+      {/* <Redirect to="/login" /> */}
     </Switch>
   );
 };

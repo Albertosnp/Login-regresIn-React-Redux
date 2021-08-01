@@ -35,11 +35,12 @@ export const logOut = () => {
 export const logIn = (userName, password) => {
   return async (dispatch) => {
     const isAuthenticated = await loginUser(userName, password);
-    dispatch({
-      type: "@login/logIn",
-      payload: {
-        isAuthenticated,
-      },
-    });
+    isAuthenticated &&
+      dispatch({
+        type: "@login/logIn",
+        payload: {
+          isAuthenticated,
+        },
+      });
   };
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { logOut } from "reducers/loginReducer";
+import "./ButtonLogOut.css";
 
 export const ButtonLogOut = () => {
   useSelector((state: RootStateOrAny) => state.login);
@@ -8,7 +9,11 @@ export const ButtonLogOut = () => {
   const handlerClick = () => {
     dispatch(logOut());
   };
-  return <button onClick={() => handlerClick()}>Cerrar sesión</button>;
+  return (
+    <div className="button-logOut">
+      <button onClick={() => handlerClick()}>Cerrar sesión</button>
+    </div>
+  );
 };
 
 export default ButtonLogOut;

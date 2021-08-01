@@ -25,5 +25,6 @@ export const loginUser = async (email, password) => {
 
 //Para el logout del usuario
 export const logoutUser = () => {
+  console.log("Paso");
   localStorage.removeItem("token");
 };
