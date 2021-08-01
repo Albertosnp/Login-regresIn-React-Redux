@@ -13,3 +13,13 @@ export const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const initUsersToShow = () => {
+  return async (dispatch) => {
+    const users = await getAllUsers();
+    dispatch({
+      type: "@usersToShow/init",
+      payload: users,
+    });
+  };
+};

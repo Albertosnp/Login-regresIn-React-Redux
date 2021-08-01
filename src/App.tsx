@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div>
       <p>Prueba técnica de LaLiga</p>
-      {!login ? (
+      {!token ? (
         <LoginForm />
       ) : (
         <button onClick={() => handlerClick()}>Cerrar sesión</button>
