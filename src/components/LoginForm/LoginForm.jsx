@@ -24,7 +24,7 @@ export const LoginForm = () => {
     e.target.value = "";
     //Para que no se envien datos al servidor vacios
     if (!userName || !password) return;
-
+    //TODO: Pasar con dispatch cuando implemente redux
     loginUser(userName, password)
       .then((res) => {
         if (res.status === 200) {
