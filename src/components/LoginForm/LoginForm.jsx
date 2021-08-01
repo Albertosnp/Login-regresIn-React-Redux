@@ -1,23 +1,40 @@
 import React, { useState } from "react";
+import { loginUser } from "services/userLogin";
 import "./LoginForm.css";
 
 /* Componente de Login */
 export const LoginForm = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  //Para cambiar los estados del input
   const handlerChange = (e) => {
     const { target } = e;
     if (target.name === "userName") {
-      setUserName(target.value);
+      const userName = target.value;
+      setUserName(userName.trim());
     }
     if (target.name === "password") {
-      setPassword(target.value);
+      const password = target.value;
+      setPassword(password.trim());
     }
   };
+  //Comprueba usuario y contraseña y conecta si es correcto
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.value = "";
-    //TODO: Enviar datos a servidor
+  // email = "eve.holt@reqres.in",
+  // password = "cityslicka"
+    //Para que no se envien datos al servidor vacios
+    if (!userName || !password) return;
+
+    loginUser(userName, password)
+      .then((res) => {
+        if (res.status === 200) {
+          const { token } = res.data;
+          localStorage.setItem("token", token);
+        } else console.log(res);
+      })
+      .catch((e) => console.log("Login incorrecto"));
   };
 
   return (
