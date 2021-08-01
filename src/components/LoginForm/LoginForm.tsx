@@ -8,6 +8,7 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
   //Para cambiar los estados del input
   const handlerChange = (e) => {
     const { target } = e;
@@ -39,12 +40,14 @@ export const LoginForm = () => {
             name="userName"
             placeholder="username"
             onChange={handlerChange}
+            autoComplete="on"
           />
           <input
             type="password"
             name="password"
             placeholder="password"
             onChange={handlerChange}
+            autoComplete="off"
           />
           <button>Iniciar sesión</button>
         </form>

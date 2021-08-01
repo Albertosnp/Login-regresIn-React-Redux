@@ -1,29 +1,33 @@
 import React from "react";
 import { LoginForm } from "components/LoginForm/LoginForm";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { logOut } from "reducers/loginReducer";
 import { Users } from "components/Users/Users";
+import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
+import ButtonLogOut from "components/ButtonLogOut/ButtonLogOut";
+import { RootStateOrAny, useSelector } from "react-redux";
 
 const App = () => {
-  const dispatch = useDispatch();
-  useSelector((state: RootStateOrAny) => state.login);
-  const token: String | null = localStorage.getItem("token");
-
-  const handlerClick = () => {
-    dispatch(logOut());
-  };
+  const auth = useSelector(
+    (state: RootStateOrAny) => state.login.isAuthenticated
+  );
+  console.log(auth);
+  
   return (
-    <div>
+    <BrowserRouter>
       <p>Prueba técnica de LaLiga</p>
-      {!token ? (
-        <LoginForm />
-      ) : (
-        <div>
-          <button onClick={() => handlerClick()}>Cerrar sesión</button>
+      {!auth ? <Link to="/login" /> : <Link to="/users" />}
+      <Switch>
+        <Route path="/login" exact>
+          {auth && <Redirect to="/users" />}
+          <LoginForm />
+        </Route>
+        <Route path="/users" exact>
+          {!auth && <Redirect to="/login" />}
+          <ButtonLogOut />
           <Users />
-        </div>
-      )}
-    </div>
+        </Route>
+        <Redirect to="/login" />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
