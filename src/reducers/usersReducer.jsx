@@ -8,8 +8,7 @@ export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "@usersToShow/init":
       return {
-        ...state,
-        usersToShow: action.users,
+        usersToShow: action.payload,
       };
     default:
       return state;

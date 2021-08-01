@@ -1,21 +1,27 @@
 import React from "react";
 import { LoginForm } from "components/LoginForm/LoginForm";
-import { useDispatch } from "react-redux";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { logOut } from "reducers/loginReducer";
+import { Users } from "components/Users/Users";
 
 const App = () => {
   const dispatch = useDispatch();
-  const user = localStorage.getItem("token");
+  useSelector((state: RootStateOrAny) => state.login);
+  const token: String | null = localStorage.getItem("token");
+
   const handlerClick = () => {
     dispatch(logOut());
   };
   return (
     <div>
       <p>Prueba técnica de LaLiga</p>
-      {!user ? (
+      {!token ? (
         <LoginForm />
       ) : (
-        <button onClick={() => handlerClick()}>Cerrar sesión</button>
+        <div>
+          <button onClick={() => handlerClick()}>Cerrar sesión</button>
+          <Users />
+        </div>
       )}
     </div>
   );
