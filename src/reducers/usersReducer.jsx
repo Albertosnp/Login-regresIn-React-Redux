@@ -1,7 +1,9 @@
+import { getAllUsers } from "services/users";
+
 const initialState = {
   usersToShow: [],
 };
-
+//Reducer
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "@usersToShow/init":
@@ -13,7 +15,7 @@ export const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
-
+// Action Creators 
 export const initUsersToShow = () => {
   return async (dispatch) => {
     const users = await getAllUsers();

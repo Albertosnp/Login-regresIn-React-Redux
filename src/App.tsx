@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { LoginForm } from "components/LoginForm/LoginForm";
-import { logoutUser } from "services/login";
+import { useDispatch } from "react-redux";
+import { logOut } from "reducers/loginReducer";
 
 const App = () => {
-  const [login, setlogin] = useState(true);
-  const token = localStorage.getItem("token");
-  console.log(token);
+  const dispatch = useDispatch();
+
   const handlerClick = () => {
-    //Para eliminar el token
-    logoutUser();
-    //Añadir estado global
-    setlogin(false);
+    //Para llamar al 
+    dispatch(logOut());
   };
   return (
     <div>
