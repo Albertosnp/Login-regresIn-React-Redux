@@ -5,15 +5,14 @@ import { logOut } from "reducers/loginReducer";
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const user = localStorage.getItem("token");
   const handlerClick = () => {
-    //Para llamar al 
     dispatch(logOut());
   };
   return (
     <div>
       <p>Prueba técnica de LaLiga</p>
-      {!token ? (
+      {!user ? (
         <LoginForm />
       ) : (
         <button onClick={() => handlerClick()}>Cerrar sesión</button>

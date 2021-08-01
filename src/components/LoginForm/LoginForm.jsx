@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { loginUser } from "services/login";
+import { useDispatch } from "react-redux";
+import { logIn } from "reducers/loginReducer";
 import "./LoginForm.css";
 
 /* Componente de Login */
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   //Para cambiar los estados del input
@@ -24,15 +26,8 @@ export const LoginForm = () => {
     e.target.value = "";
     //Para que no se envien datos al servidor vacios
     if (!userName || !password) return;
-    //TODO: Pasar con dispatch cuando implemente redux
-    loginUser(userName, password)
-      .then((res) => {
-        if (res.status === 200) {
-          const { token } = res.data;
-          localStorage.setItem("token", token);
-        } else console.log(res);
-      })
-      .catch((e) => console.log("Login incorrecto"));
+    //Dispara el action que llama al metodo logIn del reducer
+    dispatch(logIn(userName, password));
   };
 
   return (
