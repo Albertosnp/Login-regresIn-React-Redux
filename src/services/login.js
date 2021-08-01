@@ -9,3 +9,7 @@ export const loginUser = async (email, password) => {
   });
   return response;
 };
+
+export const logoutUser = () => {
+  localStorage.removeItem("token");
+};

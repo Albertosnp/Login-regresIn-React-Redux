@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { loginUser } from "services/userLogin";
+import { loginUser } from "services/login";
 import "./LoginForm.css";
 
 /* Componente de Login */

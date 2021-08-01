@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { LoginForm } from "components/LoginForm/LoginForm";
+import { logoutUser } from "services/login";
 
 const App = () => {
   const [login, setlogin] = useState(true);
   const token = localStorage.getItem("token");
   console.log(token);
   const handlerClick = () => {
-    localStorage.removeItem("token");
+    //Para eliminar el token
+    logoutUser();
     //Añadir estado global
     setlogin(false);
   };
