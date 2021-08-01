@@ -1,4 +1,4 @@
-import { getAllUsers } from "services/users";
+import { getAllUsersPerPage } from "services/users";
 
 const initialState = {
   usersToShow: [],
@@ -16,9 +16,9 @@ export const usersReducer = (state = initialState, action) => {
 };
 
 /** Action Creators */
-export const initUsersToShow = () => {
+export const usersToShow = (page = 1) => {
   return async (dispatch) => {
-    const users = await getAllUsers();
+    const users = await getAllUsersPerPage(page);
     dispatch({
       type: "@usersToShow/init",
       payload: users,

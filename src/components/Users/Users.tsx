@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { initUsersToShow } from "reducers/usersReducer";
+import { usersToShow } from "reducers/usersReducer";
 
 import "./user.css";
 export const Users = () => {
   //Saca las notas del store especificado
   const dispatch = useDispatch();
   const users = useSelector((state: RootStateOrAny) => state.users.usersToShow);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(initUsersToShow());
-  }, [dispatch]);
+    dispatch(usersToShow(page));
+  }, [dispatch, page]);
 
   return (
     <section>
+      <button onClick={() => setPage(2)}>Página Siguiente</button>
+      <button onClick={() => setPage(1)}>Página Anterior</button>
       {users?.map((user) => {
         const { id, avatar, email, first_name, last_name } = user;
         return (
