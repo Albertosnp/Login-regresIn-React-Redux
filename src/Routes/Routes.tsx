@@ -11,7 +11,6 @@ export const Routes = () => {
   const auth = useSelector(
     (state: RootStateOrAny) => state.login.isAuthenticated
   );
-
   return (
     <Switch>
       <Route path="/login" exact>
