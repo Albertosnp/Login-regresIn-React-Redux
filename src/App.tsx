@@ -5,7 +5,6 @@ import { Routes } from "Routes/Routes";
 const App = () => {
   return (
     <BrowserRouter>
-      <p>Prueba técnica de LaLiga</p>
       <Routes />
     </BrowserRouter>
   );

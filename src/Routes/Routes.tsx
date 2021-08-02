@@ -5,6 +5,7 @@ import { LoginForm } from "../components/LoginForm/LoginForm";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 import { logInWithToken } from "reducers/loginReducer";
+import { LoginLayout } from '../Layouts/LoginLayout/LoginLayout';
 
 /**
  * Componente Routes que aloja los componentes a mostrar dependiendo de si esta logueado
@@ -24,9 +25,10 @@ export const Routes = () => {
     <Switch>
       <Route path="/login" exact>
         {auth && <Redirect to="/users" />}
-        <LoginForm />
+        <LoginLayout />
       </Route>
       <PrivateRoute path="/users" isAuthenticated={auth} />
+      <Redirect to="/login" />
     </Switch>
   );
 };

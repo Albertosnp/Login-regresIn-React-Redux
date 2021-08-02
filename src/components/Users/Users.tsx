@@ -9,6 +9,8 @@ export const Users = () => {
   const users = useSelector((state: RootStateOrAny) => state.users.usersToShow);
   const [page, setPage] = useState(1);
 
+  //Efecto que se ejecuta cuando se carga la página y cuando cambie la página a mostrar
+  //Hace rerenderizar el componente
   useEffect(() => {
     dispatch(usersToShow(page));
   }, [dispatch, page]);
