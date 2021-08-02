@@ -15,8 +15,8 @@ export const Users = () => {
 
   return (
     <section>
-      <button onClick={() => setPage(2)}>Página Siguiente</button>
       <button onClick={() => setPage(1)}>Página Anterior</button>
+      <button onClick={() => setPage(2)}>Página Siguiente</button>
       {users?.map((user) => {
         const { id, avatar, email, first_name, last_name } = user;
         return (
