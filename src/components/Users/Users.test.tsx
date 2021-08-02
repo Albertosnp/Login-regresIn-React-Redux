@@ -19,5 +19,5 @@ test("User render", () => {
       last_name={last_name}
     />
   );
-  component.getByText("Sanchez");
+  component.getByText("email");
 });
