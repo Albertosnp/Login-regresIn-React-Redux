@@ -44,3 +44,12 @@ export const logIn = (userName, password) => {
       });
   };
 };
+
+export const logInWithToken = () => {
+  return {
+    type: "@login/logIn",
+    payload: {
+      isAuthenticated: true,
+    },
+  };
+};
