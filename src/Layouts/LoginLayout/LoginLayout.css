@@ -1,0 +1,11 @@
+.logged-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-page {
+    width: 360px;
+    margin: auto;
+}

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { usersToShow } from "reducers/usersReducer";
 
-import "./user.css";
+import "./users.css";
+
 export const Users = () => {
   //Saca las notas del store especificado
   const dispatch = useDispatch();
@@ -14,43 +15,52 @@ export const Users = () => {
   useEffect(() => {
     dispatch(usersToShow(page));
   }, [dispatch, page]);
+  //TODO: mejorar paginacion --> el back manda total de paginas a mostrar
 
   return (
-    <section>
-      <button onClick={() => setPage(1)}>Página Anterior</button>
-      <button onClick={() => setPage(2)}>Página Siguiente</button>
-      {users?.map((user) => {
-        const { id, avatar, email, first_name, last_name } = user;
-        return (
-          <User
-            key={id}
-            id={id}
-            avatar={avatar}
-            email={email}
-            first_name={first_name}
-            last_name={last_name}
-          />
-        );
-      })}
-    </section>
+    <div className="container">
+      <div className="paginacion">
+        <button onClick={() => setPage(1)}>&lt;</button>
+        <button onClick={() => setPage(2)}>&gt;</button>
+      </div>
+      <div className="row">
+        <section className="content-section">
+          {users?.map((user) => {
+            const { id, avatar, email, first_name, last_name } = user;
+            return (
+              <User
+                key={id}
+                id={id}
+                avatar={avatar}
+                email={email}
+                first_name={first_name}
+                last_name={last_name}
+              />
+            );
+          })}
+        </section>
+      </div>
+    </div>
   );
 };
 
 const User = ({ id, avatar, email, first_name, last_name }) => {
   return (
-    <section key={id}>
-      <div className="content">
+    <div key={id}>
+      <div className="card">
         <img src={avatar} alt="name" />
         <aside>
-          <h1>
+          <h3>
             {first_name} {last_name}
-          </h1>
+          </h3>
         </aside>
-        <div className="gmail">
-          <h1>Email</h1>
+        <div className="mail">
+          <p>
+            <strong>Email: </strong>
+          </p>
           <span>{email}</span>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
