@@ -33,7 +33,6 @@ export const Users = () => {
             return (
               <User
                 key={id}
-                id={id}
                 avatar={avatar}
                 email={email}
                 first_name={first_name}
@@ -47,9 +46,9 @@ export const Users = () => {
   );
 };
 
-const User = ({ id, avatar, email, first_name, last_name }) => {
+export const User = ({ avatar, email, first_name, last_name }) => {
   return (
-    <StyledCard key={id}>
+    <StyledCard>
       <StyledAvatar src={avatar} alt="name" />
       <aside>
         <StyledH3>

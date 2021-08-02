@@ -20,5 +20,4 @@ Entorno de desarrollo
 
 *** Puedes documentar aquí la memoria de tu prueba ***
 
-- He añadido axios para un mejor manejo de peticiones
-- Al hacer login la api no controla la contraseña 
+- Añadido axios para un mejor manejo de peticiones

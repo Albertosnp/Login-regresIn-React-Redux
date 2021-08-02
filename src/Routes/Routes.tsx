@@ -5,7 +5,7 @@ import { Redirect, Route } from "react-router-dom";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 import { logInWithToken } from "reducers/loginReducer";
-import { LoginLayout } from '../Layouts/LoginLayout/LoginLayout';
+import { LoginLayout } from "../Layouts/LoginLayout/LoginLayout";
 
 /**
  * Componente Routes que aloja los componentes a mostrar dependiendo de si esta logueado
