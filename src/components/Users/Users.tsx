@@ -77,7 +77,7 @@ const StyleButtonPagination = styled.button`
   border-radius: 40px;
   cursor: pointer;
   outline: 0;
-  background: #f2f2f2;
+  background: #e4e4e4;
   max-width: 360px;
   border: 0;
   padding: 15px;
@@ -87,13 +87,14 @@ const StyleButtonPagination = styled.button`
   &:hover,
   &:active,
   &:focus {
-    background: #e6e5e5;
+    background: #d3d2d2;
   }
 `;
 
 const StyledRow = styled.div`
-  width: 85%;
-  margin: auto;
+  width: 100%;
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `;
 
 const StyledSection = styled.section`
@@ -109,6 +110,7 @@ const StyledCard = styled.div`
   margin: 40px 20px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   padding: 15px;
+  min-width: 200px;
   max-width: 200px;
   height: 300px;
 `;
