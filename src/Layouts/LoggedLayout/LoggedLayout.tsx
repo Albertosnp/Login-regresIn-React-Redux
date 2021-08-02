@@ -1,14 +1,23 @@
 import React from "react";
 import ButtonLogOut from "../../components/ButtonLogOut/ButtonLogOut";
 import { Users } from "../../components/Users/Users";
-import "./loggedLayout.css";
+import styled from "styled-components";
 
 export const LoggedLayout = () => {
   return (
-    <div className="logged-layout">
+    <StyledLoggedLayout>
       <h2>Listado</h2>
       <ButtonLogOut />
       <Users />
-    </div>
+    </StyledLoggedLayout>
   );
 };
+
+const StyledLoggedLayout = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+`;

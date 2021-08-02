@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { usersToShow } from "reducers/usersReducer";
-
-import "./users.css";
+import styled from "styled-components";
 
 export const Users = () => {
   //Saca las notas del store especificado
@@ -18,13 +17,17 @@ export const Users = () => {
   //TODO: mejorar paginacion --> el back manda total de paginas a mostrar
 
   return (
-    <div className="container">
-      <div className="paginacion">
-        <button onClick={() => setPage(1)}>&lt;</button>
-        <button onClick={() => setPage(2)}>&gt;</button>
+    <StylidContainer>
+      <div>
+        <StyleButtonPagination onClick={() => setPage(1)}>
+          &lt;
+        </StyleButtonPagination>
+        <StyleButtonPagination onClick={() => setPage(2)}>
+          &gt;
+        </StyleButtonPagination>
       </div>
-      <div className="row">
-        <section className="content-section">
+      <StyledRow>
+        <StyledSection>
           {users?.map((user) => {
             const { id, avatar, email, first_name, last_name } = user;
             return (
@@ -38,29 +41,91 @@ export const Users = () => {
               />
             );
           })}
-        </section>
-      </div>
-    </div>
+        </StyledSection>
+      </StyledRow>
+    </StylidContainer>
   );
 };
 
 const User = ({ id, avatar, email, first_name, last_name }) => {
   return (
-    <div key={id}>
-      <div className="card">
-        <img src={avatar} alt="name" />
-        <aside>
-          <h3>
-            {first_name} {last_name}
-          </h3>
-        </aside>
-        <div className="mail">
-          <p>
-            <strong>Email: </strong>
-          </p>
-          <span>{email}</span>
-        </div>
-      </div>
-    </div>
+    <StyledCard key={id}>
+      <StyledAvatar src={avatar} alt="name" />
+      <aside>
+        <StyledH3>
+          {first_name} {last_name}
+        </StyledH3>
+      </aside>
+      <StyledEmail>
+        <p>
+          <strong>Email: </strong>
+        </p>
+        <span>{email}</span>
+      </StyledEmail>
+    </StyledCard>
   );
 };
+
+const StylidContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyleButtonPagination = styled.button`
+  margin: 15px 10px;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: 0;
+  background: #f2f2f2;
+  max-width: 360px;
+  border: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover,
+  &:active,
+  &:focus {
+    background: #e6e5e5;
+  }
+`;
+
+const StyledRow = styled.div`
+  width: 85%;
+  margin: auto;
+`;
+
+const StyledSection = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-wrap: wrap;
+`;
+
+const StyledCard = styled.div`
+  flex: 1;
+  margin: 40px 20px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 15px;
+  max-width: 200px;
+  height: 300px;
+`;
+
+const StyledAvatar = styled.img`
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+`;
+
+const StyledH3 = styled.h3`
+  margin-top: 20px;
+  font-size: 20px;
+`;
+
+const StyledEmail = styled.div`
+  font-size: 16px;
+  color: #3d3d3d;
+`;

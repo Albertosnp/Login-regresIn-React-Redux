@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "reducers/loginReducer";
 import { isValidateEmail } from "utils/validations";
-import "./LoginForm.css";
+import styled from "styled-components";
 
 /* Componente de Login */
 export const LoginForm = () => {
@@ -35,32 +35,64 @@ export const LoginForm = () => {
 
   return (
     <div className="login-page">
-      <div className="form">
-        <form className="login-form" onSubmit={handleSubmit} name="login">
-          {formError ? (
-            <span className="error-text">
-              Por favor, introduce credenciales correctas
-            </span>
-          ) : (
-            ""
-          )}
-          <input
-            type="text"
-            name="userName"
-            placeholder="username"
-            onChange={handlerChange}
-            autoComplete="on"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            onChange={handlerChange}
-            autoComplete="off"
-          />
-          <button>Iniciar sesión</button>
-        </form>
-      </div>
+      <StyledForm onSubmit={handleSubmit} name="login">
+        {formError ? (
+          <span>Por favor, introduce credenciales correctas</span>
+        ) : (
+          ""
+        )}
+        <StyledInput
+          type="text"
+          name="userName"
+          placeholder="username"
+          onChange={handlerChange}
+          autoComplete="on"
+        />
+        <StyledInput
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={handlerChange}
+          autoComplete="off"
+        />
+        <StyledButton>Iniciar sesión</StyledButton>
+      </StyledForm>
     </div>
   );
 };
+
+const StyledForm = styled.form`
+  z-index: 1;
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+`;
+const StyledInput = styled.input`
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+`;
+const StyledButton = styled.button`
+  text-transform: uppercase;
+  outline: 0;
+  background: #0b83d3;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:focus {
+    background: #2e5f9e;
+  }
+`;

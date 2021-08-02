@@ -1,12 +1,23 @@
 import { LoginForm } from "components/LoginForm/LoginForm";
 import React from "react";
-import "./LoginLayout.css";
+import styled from "styled-components";
 
 export const LoginLayout = () => {
   return (
-    <div className="logged-layout">
+    <StyledLoginLayout>
       <h2>Login</h2>
       <LoginForm />
-    </div>
+    </StyledLoginLayout>
   );
 };
+
+const StyledLoginLayout = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 360px;
+  margin: auto;
+`;

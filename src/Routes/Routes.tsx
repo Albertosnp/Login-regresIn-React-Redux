@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Switch } from "react-router";
 import { Redirect, Route } from "react-router-dom";
-import { LoginForm } from "../components/LoginForm/LoginForm";
+
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 import { logInWithToken } from "reducers/loginReducer";
