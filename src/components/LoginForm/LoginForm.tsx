@@ -32,8 +32,12 @@ export const LoginForm = () => {
     if (!isValidateEmail(userName) || !password) formOk = false;
     //Dispara el action para cambiar el estado global de login
     if (formOk) {
-      const isValid = await loginUser(userName, password);
-      return isValid ? dispatch(logIn()) : false;
+      try {
+        const isValid = await loginUser(userName, password);
+        return isValid ? dispatch(logIn()) : false;
+      } catch (error) {
+        console.log(error);
+      }
     }
     setFormError(true);
   };
