@@ -27,19 +27,30 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     e.target.value = "";
-    let formOk = true;
     //Para mostrar mensaje de error si hay alguno
-    if (!isValidateEmail(userName) || !password) formOk = false;
+    if (!isValidateEmail(userName) || !password) {
+      setFormError(true);
+      setTimeout(() => {
+        setFormError(false);
+      }, 5000);
+      return;
+    }
     //Dispara el action para cambiar el estado global de login
-    if (formOk) {
+
+    if (!formError) {
       try {
-        const isValid = await loginUser(userName, password);
-        return isValid ? dispatch(logIn()) : false;
+        const token = await loginUser(userName, password);
+        localStorage.setItem("token", token);
+        dispatch(logIn());
       } catch (error) {
-        console.log(error);
+        console.log("Error en credenciales");
+        //para eliminar mensaje de error pasados 5 segundos
+        setFormError(true);
+        setTimeout(() => {
+          setFormError(false);
+        }, 5000);
       }
     }
-    setFormError(true);
   };
 
   return (
