@@ -12,7 +12,7 @@ export const loginUser = async (email, password) => {
   } catch (error) {
     console.log("Error al conectar");
   }
-
+  console.log(response);
   //Si el usuario se ha autenticado correctamente se guarda el token en localStorage y devuelve true
   if (response.status === 200) {
     const { token } = response.data;

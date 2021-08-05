@@ -1,4 +1,4 @@
-import { loginUser, logoutUser } from "services/login";
+import { logoutUser } from "services/login";
 
 const initialState = {
   isAuthenticated: false,
@@ -32,16 +32,12 @@ export const logOut = () => {
   };
 };
 
-export const logIn = (userName, password) => {
-  return async (dispatch) => {
-    const isAuthenticated = await loginUser(userName, password);
-    isAuthenticated &&
-      dispatch({
-        type: "@login/logIn",
-        payload: {
-          isAuthenticated,
-        },
-      });
+export const logIn = () => {
+  return {
+    type: "@login/logIn",
+    payload: {
+      isAuthenticated: true,
+    },
   };
 };
 

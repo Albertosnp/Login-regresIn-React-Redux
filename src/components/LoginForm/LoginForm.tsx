@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "reducers/loginReducer";
 import { isValidateEmail } from "utils/validations";
 import styled from "styled-components";
+import { loginUser } from "services/login";
 
 /* Componente de Login */
 export const LoginForm = () => {
@@ -23,14 +24,18 @@ export const LoginForm = () => {
     }
   };
   //Comprueba usuario y contraseña y conecta si es correcto
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     e.target.value = "";
     let formOk = true;
-    //Para que no se envien datos al servidor vacios
+    //Para mostrar mensaje de error si hay alguno
     if (!isValidateEmail(userName) || !password) formOk = false;
-    //Dispara el action que llama al metodo logIn del reducer
-    formOk ? dispatch(logIn(userName, password)) : setFormError(true);
+    //Dispara el action para cambiar el estado global de login
+    if (formOk) {
+      const isValid = await loginUser(userName, password);
+      return isValid ? dispatch(logIn()) : false;
+    }
+    setFormError(true);
   };
 
   return (
