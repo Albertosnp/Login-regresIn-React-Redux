@@ -35,11 +35,11 @@ export const LoginForm = () => {
       }, 5000);
       return;
     }
-    //Dispara el action para cambiar el estado global de login
-
+    
     if (!formError) {
       try {
         const token = await loginUser(userName, password);
+        //Guarda token e inicia sesion con en estado global
         localStorage.setItem("token", token);
         dispatch(logIn());
       } catch (error) {
