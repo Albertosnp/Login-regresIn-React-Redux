@@ -2,6 +2,9 @@ App SPA, consiste en un login que conecta con la API de pruebas RegresIn, muestr
 
 Realizado con JS / React, Redux (Thunks) y Styled-components.
 
+![Screenshot](captura1.png)
+![Screenshot](captura2.png)
+
 ## Entorno de desarrollo local
 
 ### `npm install`
