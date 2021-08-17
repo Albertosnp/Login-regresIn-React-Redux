@@ -5,14 +5,15 @@ const initialState = {
 };
 
 export const loginReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case "@login/logIn":
       return {
-        isAuthenticated: true,
+        ...action.payload,
       };
     case "@login/logOut":
       return {
-        isAuthenticated: false,
+        ...action.payload,
       };
     default:
       return state;
@@ -33,15 +34,6 @@ export const logOut = () => {
 };
 
 export const logIn = () => {
-  return {
-    type: "@login/logIn",
-    payload: {
-      isAuthenticated: true,
-    },
-  };
-};
-
-export const logInWithToken = () => {
   return {
     type: "@login/logIn",
     payload: {

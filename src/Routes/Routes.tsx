@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
-import { logInWithToken } from "reducers/loginReducer";
+import { logIn } from "reducers/loginReducer";
 import { LoginLayout } from "../Layouts/LoginLayout/LoginLayout";
 
 /**
@@ -19,7 +19,7 @@ export const Routes = () => {
     (state: RootStateOrAny) => state.login.isAuthenticated
   );
   //Si hay toquen --> Cambia estado global
-  if (token) dispatch(logInWithToken());
+  if (token) dispatch(logIn());
 
   return (
     <Switch>
