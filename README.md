@@ -1,12 +1,6 @@
-# Prueba técnica React de LaLiga
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App SPA, consiste en un login que conecta con la API de pruebas RegresIn, muestra un listado para el usuario registrado (eve.holt@reqres.in). 
 
-Versión de Node: 12.16.1 o superior
-Versión de NPM: 6.13.4 o superiror
-Compatibilidad: ES6 Navegadores evergreen (Chrome, Firefox, Edge, Safari)
-
-## Instrucciones
-- [Instrucciones](src/docs/laliga-prueba-tecnica-instrucciones.md)
+Realizado con JS / React, Redux (Thunks) y Styled-components.
 
 ## Entorno de desarrollo local
 
@@ -15,9 +9,3 @@ Para instalación de dependencias
 
 ### `npm start`
 Entorno de desarrollo
-
-## Memoria
-
-*** Puedes documentar aquí la memoria de tu prueba ***
-
-- Añadido axios para un mejor manejo de peticiones
