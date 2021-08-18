@@ -35,7 +35,6 @@ export const LoginForm = () => {
       }, 5000);
       return;
     }
-    
     if (!formError) {
       try {
         const { token } = await loginUser(userName, password);
