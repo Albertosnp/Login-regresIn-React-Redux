@@ -38,7 +38,7 @@ export const LoginForm = () => {
     
     if (!formError) {
       try {
-        const token = await loginUser(userName, password);
+        const { token } = await loginUser(userName, password);
         //Guarda token e inicia sesion con en estado global
         localStorage.setItem("token", token);
         dispatch(logIn());
